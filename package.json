@@ -1,21 +1,24 @@
 {
-  "name": "module-13-challenge-orm",
+  "name": "13-e-commerce-back-end",
   "version": "1.0.0",
-  "description": "",
+  "description": "User Story\r AS A manager at an internet retail company\r I WANT a back end for my e-commerce website that uses the latest technologies\r SO THAT my company can compete with other e-commerce companies",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "watch": "nodemon server.js",
-    "seed": "node seeds/index.js"
+    "watch": "nodemon server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git@work.github.com:coding-boot-camp/module-13-challenge-orm.git"
+    "url": "git+https://github.com/michellebaker1129/13-e-commerce-back-end.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michellebaker1129/13-e-commerce-back-end/issues"
+  },
+  "homepage": "https://github.com/michellebaker1129/13-e-commerce-back-end#readme",
   "devDependencies": {
     "nodemon": "^2.0.3"
   },
