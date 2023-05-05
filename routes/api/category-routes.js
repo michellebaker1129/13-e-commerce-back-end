@@ -5,6 +5,7 @@ const { Category, Product } = require('../../models');
 
 router.get('/', (req, res) => {
   // /api/categories/
+
   // find all categories
   // be sure to include its associated Products
   Category.findAll(
@@ -23,6 +24,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   // /api/categories/1
+
   // req.params.id
   // find one category by its `id` value
   // be sure to include its associated Products
@@ -53,6 +55,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   // /api/categories/
+
   // create a new category
   Category
     .create(req.body)
@@ -67,11 +70,11 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // /api/categories/1
-  // update a category by its `id` value
   // {
   //   "category_name": "New Category"  
   // }
 
+  // update a category by its `id` value
   // write a function that updates the Category model by id with the data in req.body
   Category.update(req.body, {
     where: {
@@ -79,13 +82,13 @@ router.put('/:id', (req, res) => {
     },
     fields: ['category_name']
   })
-    .then(category => {
-      if (!category) {
+    .then(numberOfUpdatedRows => {
+      if (!numberOfUpdatedRows) {
         res.status(404).json({ message: 'No category found with this id' })
         return;
       }
 
-      res.status(200).json(category);
+      res.status(200).json({ message: `Category ${req.params.id} updated` });
     })
     .catch(err => {
       console.log(err);
@@ -94,6 +97,8 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
+  // /api/categories/1
+  
   // delete a category by its `id` value
   // write a function that deletes the Category model by id
   Category.destroy({
@@ -101,13 +106,13 @@ router.delete('/:id', (req, res) => {
       id: req.params.id
     }
   })
-    .then(category => {
-      if (!category) {
+    .then(numberOfDeletedRows => {
+      if (numberOfDeletedRows === 0) {
         res.status(404).json({ message: 'No category found with this id' })
         return;
       }
 
-      res.status(200).json(category);
+      res.status(200).json(numberOfDeletedRows);
     })
     .catch(err => {
       console.log(err);
